@@ -78,8 +78,8 @@ public class Rectangle extends Polygone {
 			gra.fill(rec);
 		}
 		if (etiqueter){
-			Etiquette E = new Etiquette(panelGraph, "caca");
-			//E.setLocation(new java.awt.Point((int)(p1.abscisse()+largeur),(int)p1.ordonnee()));
+			Etiquette E = new Etiquette("Rectangle", p1);
+			Script.getEtiquettes().add(E);
 		}
 	}
 	@Override

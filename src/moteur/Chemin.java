@@ -14,7 +14,7 @@ public abstract class Chemin implements Geometrie {
 
 	public abstract Forme creer(Crayon sh);
 
-	public abstract void inserer(Forme fig);
+	public abstract void inserer(Forme fig) throws Exception;
 	
 	public void remplir() throws Exception {
 		graphics.fill(this.shape);

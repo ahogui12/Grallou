@@ -1,28 +1,31 @@
 package affichage;
 
+import interpreteur.Forme;
+
 import java.awt.Color;
 
 import javax.swing.JLabel;
 
+import moteur.Crayon;
 import moteur.Point;
 
 public class Etiquette extends JLabel {
 	
-	private PanelGraph panel;
-		
+	private Point position;
+			
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Etiquette(PanelGraph panel, String text){
+	public Etiquette(String text, Point position){
 		//super(text);
-		this.panel = panel;
+		this.position = position;
 		this.setBackground(Color.PINK);
-		this.setText(text);
-		this.panel.add(this);
-		
-		this.setLocation(0, 0);
+		this.setText(text);		
 	}
-
+	
+	public Point getPosition(){
+		return position;
+	}
 }

@@ -8,6 +8,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.Box.Filler;
+import javax.swing.JLabel;
 
 import Main.Script;
 import affichage.Etiquette;
@@ -48,8 +49,9 @@ public class Cercle extends Chemin implements Ferme {
 	public boolean isDessiner() {
 		return dessiner;
 	}
+	
+	@Override
 	public void dessiner() {
-		System.out.println("swagswagswag");
 		this.dessiner = true;
 	}
 	public boolean isRemplir() {
@@ -62,11 +64,10 @@ public class Cercle extends Chemin implements Ferme {
 
 	@Override
 	public void paintComponent(Graphics g, PanelGraph panelGraph, Crayon trace) {
-		System.out.println("swag putain");
-		Ellipse2D.Double cercle = new Ellipse2D.Double(centre.abscisse()-rayon, centre.ordonnee()+rayon, 2*rayon, 2*rayon);
+		Ellipse2D.Double cercle = new Ellipse2D.Double(centre.abscisse()-rayon, centre.ordonnee()-rayon, 2*rayon, 2*rayon);
+		
 		Graphics2D gra = (Graphics2D) g;
 		if (dessiner) {
-			System.out.println("swagputain");
 			gra.setColor(trace.getCouleur());
 			gra.setStroke(new BasicStroke((float)trace.getEpaisseur()));
 			gra.draw(cercle);
@@ -76,10 +77,9 @@ public class Cercle extends Chemin implements Ferme {
 			gra.fill(cercle);
 		}
 		if (etiqueter){
-			//Etiquette E = new Etiquette("Cercle");
-			//E.setLocation(new java.awt.Point((int)(centre.abscisse()+rayon), (int)centre.ordonnee()));
-			//System.out.println("Etiquette placée en" );
-			//panelGraph.add(E);
+			Point p = new Point(centre.abscisse(), centre.ordonnee()-rayon);
+			Etiquette E = new Etiquette("Cercle", p);
+			Script.getEtiquettes().add(E);
 		}
 
 	}

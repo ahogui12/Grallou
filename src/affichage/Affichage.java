@@ -16,10 +16,10 @@ import moteur.Rectangle;
 
 public class Affichage extends JFrame {
 
-	public Affichage(ArrayList<Dessin> dess) {
+	public Affichage(ArrayList<Dessin> dess, ArrayList<Etiquette> ett) {
 		super("Langage Swag");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		PanelGraph panel = new PanelGraph(dess);
+		PanelGraph panel = new PanelGraph(dess,ett);
 		//Etiquette E = new Etiquette("coucou");
 		//panel.add(new Etiquette("coucou"));
 		//E.setLocation(100, 100);
