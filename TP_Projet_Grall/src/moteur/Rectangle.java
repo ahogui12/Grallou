@@ -3,6 +3,7 @@ package moteur;
 import interpreteur.Forme;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class Rectangle extends Polygone {
 	private boolean dessiner;
 	private boolean remplir;
 	private Color remplissage;
+	private Geometrie inserer = null;
 	/**
 	 * @param longueur
 	 * @param largeur
@@ -75,6 +77,26 @@ public class Rectangle extends Polygone {
 			gra.setColor(this.remplissage);
 			gra.fill(rec);
 		}
+		if (inserer != null) {
+			Rectangle2D rec1 = inserer.getShape().getBounds2D();
+			
+			if (rec.contains(p1.abscisse(),p1.ordonnee(),rec1.getMaxX()-rec1.getMinX(),rec1.getMaxY()-rec1.getMinY())) {
+				if (inserer instanceof Cercle) {
+					Point centre = new Point(p1.abscisse()+longueur/2, p1.ordonnee()+largeur/2);
+					Cercle c = (Cercle)inserer;
+					Ellipse2D.Double cercle = new Ellipse2D.Double(centre.abscisse()-c.getRayon(), centre.ordonnee()-c.getRayon(), 2*c.getRayon(), 2*c.getRayon());
+					gra.draw(cercle);
+				}
+				if (inserer instanceof Rectangle) {
+					Point centre = new Point(p1.abscisse()+longueur/2, p1.ordonnee()+largeur/2);
+					Rectangle r = (Rectangle)inserer;
+					Rectangle2D.Double rectangle = new Rectangle2D.Double(centre.abscisse()-r.getLongueur()/2, centre.ordonnee() - r.getLargeur()/2, r.getLongueur(), r.getLargeur());
+					gra.draw(rectangle);
+
+				}
+			}
+			
+		}
 		
 	}
 	@Override
@@ -90,7 +112,32 @@ public class Rectangle extends Polygone {
 		
 	}
 	
+	public void inserer(Forme fig1) {
+		inserer = (Geometrie) fig1;
+	}
+	@Override
+	public Shape getShape() {
+		return new Rectangle2D.Double(p1.abscisse(), p1.ordonnee(), longueur, largeur);
+	}
+	public static Rectangle Rectangle(int longueur, int largeur, Point p1) {
+		Rectangle rec = new Rectangle(longueur, largeur, p1);
+		Script.creer(rec);
+		return rec;
+	}
 	
+	public static Rectangle Rectangle(double longueur, double largeur, Point p1, float largeurCray) {
+		Rectangle rec = new Rectangle(longueur, largeur, p1);
+		Crayon cray = new Crayon((int) largeurCray, Color.black);
+		Script.creer(rec,cray);
+		return rec;
+	}
 	
+	public Rectangle creer(double longueur, double largeur, Point p1) {
+		return new Rectangle(longueur, largeur, p1);
+	}
 
+	public boolean executer() {
+		Script.creer(this);
+		return true;
+	}
 }

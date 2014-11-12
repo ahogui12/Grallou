@@ -3,6 +3,7 @@ package interpreteur;
 import java.awt.Color;
 
 import Main.Script;
+import moteur.Cercle;
 import moteur.Crayon;
 import moteur.Point;
 import moteur.Rectangle;
@@ -45,26 +46,6 @@ public class Creation implements Fonctions {
 		this.cray = cray;
 	}
 
-
-
-	public static Rectangle Rectangle(double longueur, double largeur, Point p1) {
-		Rectangle rec = new Rectangle(longueur, largeur, p1);
-		Script.creer(rec);
-		return rec;
-	}
-
-	public static Rectangle Rectangle(double longueur, double largeur, Point p1, float largeurCray) {
-		Rectangle rec = new Rectangle(longueur, largeur, p1);
-		Crayon cray = new Crayon((int) largeurCray, Color.black);
-		Script.creer(rec,cray);
-		return rec;
-	}
-
-
-	public static Point Point(double i, double j) {
-		Point pt = new Point(i, j);
-		Script.creer(pt);
-		return pt;
-	}
+	
 
 }

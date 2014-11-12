@@ -1,0 +1,11 @@
+Path,Lines of code,Lines of code generated,Lines of user code, Percentage of generated code
+/TP_Projet_Grall,23,23,0,"100,00"
+/TP_Projet_Grall/.settings,11,11,0,"100,00"
+/TP_Projet_Grall/bin/Main,46,46,0,"100,00"
+/TP_Projet_Grall/bin/affichage,41,41,0,"100,00"
+/TP_Projet_Grall/bin/interpreteur,108,108,0,"100,00"
+/TP_Projet_Grall/bin/moteur,212,212,0,"100,00"
+/TP_Projet_Grall/src/Main,86,86,0,"100,00"
+/TP_Projet_Grall/src/affichage,89,89,0,"100,00"
+/TP_Projet_Grall/src/interpreteur,229,229,0,"100,00"
+/TP_Projet_Grall/src/moteur,591,591,0,"100,00"

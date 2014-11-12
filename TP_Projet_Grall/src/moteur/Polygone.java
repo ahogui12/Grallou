@@ -10,10 +10,7 @@ import interpreteur.Forme;
 public abstract class Polygone extends Chemin implements Ferme {
 
 	@Override
-	public void dessiner() {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void dessiner() ;
 
 	@Override
 	public abstract Forme creer(Crayon cray) ;
@@ -21,10 +18,7 @@ public abstract class Polygone extends Chemin implements Ferme {
 	
 
 	@Override
-	public void inserer(Forme fig) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void inserer(Forme fig);
 
 	@Override
 	public void remplir() throws Exception {

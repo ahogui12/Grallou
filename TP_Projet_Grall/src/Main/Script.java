@@ -4,12 +4,18 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import affichage.Affichage;
+import affichage.Etiquette;
+import interpreteur.Booleen;
 import interpreteur.Creation;
 import interpreteur.Dessiner;
 import interpreteur.Etiqueter;
+import interpreteur.Fonctions;
 import interpreteur.Forme;
+import interpreteur.If;
+import interpreteur.Inserer;
 import interpreteur.Remplir;
 import interpreteur.Sequence;
+import interpreteur.Superieur;
 import moteur.Cercle;
 import moteur.Crayon;
 import moteur.Dessin;
@@ -20,6 +26,8 @@ public class Script {
 	
 	private static Sequence seq = new Sequence();
 	private static ArrayList<Dessin> dess = new ArrayList<>();
+	private static ArrayList<Etiquette> etiquettes = new ArrayList<>();
+
 	private static Color Rouge = Color.red;
 	private static Color Noir = Color.black;
 	private static Color Blanc = Color.white;
@@ -61,17 +69,34 @@ public class Script {
 	public static void setDess(ArrayList<Dessin> dess) {
 		Script.dess = dess;
 	}
+	
+	public static ArrayList<Etiquette> getEtiquettes(){
+		return etiquettes;
+	}
+	
+	public static void setEtiquettes(ArrayList<Etiquette> etiquettes){
+		Script.etiquettes = etiquettes;
+	}
+	
+	public static void inserer(Forme fig1, Forme fig2) {
+		seq.add(new Inserer(fig1,fig2));
+	}
 
 	public static void main(String[] args) throws Exception {
 
-				Point p1 = Creation.Point(500,100);
-				Rectangle rec = Creation.Rectangle(100,50,p1,10);
-				dessiner(rec);
-				remplir(rec, Vert);
-				Point p2 = Creation.Point(20, 60);
-				Rectangle rec2 = Creation.Rectangle(200, 300, p2);
-				dessiner(rec2);
-				remplir(rec2, Rouge);
+				Point p1 = Point.Point(500,100); //Création du point p1
+				Point p3 = Point.Point(650,300); // Création du point p3
+				
+				Rectangle rec = Rectangle.Rectangle(500,500,p1,10); //Initialisation du rectangle
+				dessiner(rec);	//procédure visant à dessiner le rectangle en paramètre				
+				remplir(rec, Vert); //Remplissage du rectangle par la couleur verte
+				
+				Point p2 = Point.Point(20, 60);
+				Rectangle rec2 = Rectangle.Rectangle(200, 300, p2);				
+				inserer(rec, rec2); // On insère le second rectangle dans le premier
+				
+				Rectangle rec3 = new Rectangle();
+				If fi = new If(new Superieur(5, 0), rec3.creer(100, 10, p1));
 				lancer(); 		
 				
 	}

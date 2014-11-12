@@ -28,7 +28,7 @@ public class Inserer implements Fonctions {
 
 
 	@Override
-	public void interpreter() {
+	public void interpreter() throws Exception {
 		fig1.inserer(fig2);
 
 	}

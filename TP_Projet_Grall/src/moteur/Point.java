@@ -5,6 +5,8 @@ import interpreteur.Forme;
 import java.awt.Color;
 import java.awt.geom.Point2D;
 
+import Main.Script;
+
 public class Point implements Forme{
 	
 	private double abscisse;
@@ -47,11 +49,6 @@ public class Point implements Forme{
 		
 	}
 
-	@Override
-	public Forme creer(Crayon cray) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void inserer(Forme fig) {
@@ -70,6 +67,28 @@ public class Point implements Forme{
 		// TODO Auto-generated method stub
 		
 	}
-	
 
+	public static Point Point(double i, double j) {
+		Point pt = new Point(i, j);
+		Script.creer(pt);
+		return pt;
+	}
+	
+	public Point creer(double abscisse, double ordonnee) {
+	return new Point(abscisse, ordonnee);
+
+}
+
+	@Override
+	public Forme creer(Crayon cray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean executer() {
+		Script.creer(this);
+		return true;
+		
+	}
 }
