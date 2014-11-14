@@ -4,6 +4,11 @@ import java.awt.Color;
 
 import moteur.Crayon;
 
+/**
+ * Interface des différentes Formes possibles
+ * @author Alex
+ *
+ */
 public interface Forme extends Operateur {
 
 	public void dessiner();

@@ -17,7 +17,7 @@ import moteur.Rectangle;
 public class Affichage extends JFrame {
 
 	public Affichage(ArrayList<Dessin> dess) {
-		super("Langage Swag");
+		super("Dessin Vectoriel");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   this.setContentPane(new PanelGraph(dess));
 

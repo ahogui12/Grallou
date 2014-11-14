@@ -2,6 +2,11 @@ package interpreteur;
 
 import java.awt.Color;
 
+/**
+ * Objet Remplir
+ * @author Alex
+ *
+ */
 public class Remplir implements Fonctions {
 
 	private Forme shape;

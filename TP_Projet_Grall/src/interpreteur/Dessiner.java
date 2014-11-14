@@ -1,5 +1,11 @@
 package interpreteur;
 
+
+/**
+ * Objet Dessiner
+ * @author Alex
+ *
+ */
 public class Dessiner implements Fonctions {
 
 	private Forme shape;

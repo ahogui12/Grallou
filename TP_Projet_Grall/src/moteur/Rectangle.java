@@ -2,6 +2,7 @@ package moteur;
 
 import interpreteur.Forme;
 
+
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
@@ -12,6 +13,11 @@ import javax.swing.border.StrokeBorder;
 import Main.Script;
 import affichage.PanelGraph;
 
+/**
+ * Implémentation des Rectangles en utilisant Rectangle2D
+ * @author Alex
+ *
+ */
 public class Rectangle extends Polygone {
 	private double longueur;
 	private double largeur;
@@ -21,10 +27,9 @@ public class Rectangle extends Polygone {
 	private Color remplissage;
 	private Geometrie inserer = null;
 	/**
-	 * @param longueur
-	 * @param largeur
-	 * @param p1
-	 * @param p2
+	 * @param longueur longueur du rectangle
+	 * @param largeur largeur du rectangle
+	 * @param p1 point d'origine
 	 */
 	public Rectangle(double longueur, double largeur, Point p1) {
 		this.longueur = longueur;
@@ -32,6 +37,9 @@ public class Rectangle extends Polygone {
 		this.p1 = p1;
 		
 	}
+	/**
+	 * Constructeur par défaut, à ne pas utiliser
+	 */
 	public Rectangle() {
 		
 	}
@@ -57,6 +65,9 @@ public class Rectangle extends Polygone {
 	public boolean isDessiner() {
 		return dessiner;
 	}
+	/**
+	 * Méthode à utiliser lorsque l'objet créé doit être dessiné
+	 */
 	public void dessiner() {
 		this.dessiner = true;
 	}
@@ -105,6 +116,8 @@ public class Rectangle extends Polygone {
 		Script.getDess().add(dess);
 		return this;
 	}
+	
+	
 	@Override
 	public void remplir(Color col) throws Exception {
 		this.remplir = true;
@@ -119,18 +132,37 @@ public class Rectangle extends Polygone {
 	public Shape getShape() {
 		return new Rectangle2D.Double(p1.abscisse(), p1.ordonnee(), longueur, largeur);
 	}
+	
+	/**
+	 * Méthode statique permettant la création d'un rectangle
+	 * A utiliser comme instance du langage
+	 * @param longueur
+	 * @param largeur
+	 * @param p1
+	 * @return
+	 */
 	public static Rectangle Rectangle(int longueur, int largeur, Point p1) {
 		Rectangle rec = new Rectangle(longueur, largeur, p1);
 		Script.creer(rec);
 		return rec;
 	}
 	
+	/**
+	 * Méthode statique permettant la création d'un rectangle
+	 * A utiliser comme instance du langage
+	 * @param longueur
+	 * @param largeur
+	 * @param p1
+	 * @param largeurCray
+	 * @return
+	 */
 	public static Rectangle Rectangle(double longueur, double largeur, Point p1, float largeurCray) {
 		Rectangle rec = new Rectangle(longueur, largeur, p1);
 		Crayon cray = new Crayon((int) largeurCray, Color.black);
 		Script.creer(rec,cray);
 		return rec;
 	}
+	
 	
 	public Rectangle creer(double longueur, double largeur, Point p1) {
 		return new Rectangle(longueur, largeur, p1);
